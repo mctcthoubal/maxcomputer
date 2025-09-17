@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Computer Training Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9fafb;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .affiliation {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .affiliation img {
+            height: 35px;
+            width: auto;
+        }
+        
+        /* Mobile Navigation */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #e69008;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+        
+        /* Courses Section */
+        .courses {
+            background-color: var(--light);
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .course-content {
+            padding: 1.5rem;
+        }
+        
+        .course-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .course-duration {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .course-card ul {
+            margin-left: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .course-card li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Admission Section */
+        .admission {
+            text-align: center;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin: 0 auto;
+            max-width: 700px;
+            overflow: hidden;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background-color: white;
+            padding: 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: var(--accent);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .affiliation {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: fixed;
+                top: 72px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 72px);
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                transition: all 0.4s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 0;
+            }
+            
+            nav a {
+                display: block;
+                padding: 1.2rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .btn {
+                margin: 0;
+                width: 80%;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .form-container {
+                padding: 1rem;
+            }
+            
+            .form-container iframe {
+                height: 1800px;
+            }
+            
+            .footer-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .feature-card, .course-card, .contact-card {
+                padding: 1.5rem;
+            }
+            
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="logo_transparent.png" alt="Max Computer Training Centre Logo">
+                <div class="logo-text">Max Computer Training Centre</div>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#admission">Admission</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="affiliation">
+                <img src="aicsm-round-logo-new-1.png" alt="AICSM Partner Logo">
+                <img src="sarva_logo-removebg-preview.png" alt="Sarva Education Logo">
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Advance Your Career with IT Education</h1>
+            <p>Max Computer Training Centre offers professional courses with experienced mentors, flexible timing, and job guidance to launch your career in the IT industry.</p>
+            <div class="btn-container">
+                <a href="#admission" class="btn">Enroll Now</a>
+                <a href="#courses" class="btn btn-secondary">Explore Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Max Computer Training Centre?</h2>
+                <p>We are committed to providing quality education and empowering students with IT skills for the modern world.</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Govt. Recognized</h3>
+                    <p>Affiliated to AICSM NSDC Partner and Sarva Education, Recognized by Govt. of India</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Experienced Mentors</h3>
+                    <p>Learn from industry professionals with years of teaching and practical experience</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Free Study Materials</h3>
+                    <p>Comprehensive study resources provided at no additional cost</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Timing</h3>
+                    <p>Choose class schedules that work best for your routine</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-indian-rupee-sign"></i>
+                    </div>
+                    <h3>Comfortable Fees</h3>
+                    <p>Quality education at affordable prices with easy payment options</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Internship & Job Guidance</h3>
+                    <p>Gain practical experience and career placement assistance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Courses</h2>
+                <p>Comprehensive IT programs designed to meet industry requirements and boost your career prospects</p>
+            </div>
+            
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>CCC</h3>
+                        <div class="course-duration">3 Months @ ₹5000</div>
+                        <ul>
+                            <li>Introduction to Computer</li>
+                            <li>Operating System</li>
+                            <li>Word Processing</li>
+                            <li>Spreadsheet Package</li>
+                            <li>Presentation Package</li>
+                            <li>Internet & Email</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>Web Designing</h3>
+                        <div class="course-duration">3 Months @ ₹5000</div>
+                        <ul>
+                            <li>HTML5 & CSS3</li>
+                            <li>JavaScript & jQuery</li>
+                            <li>Responsive Design</li>
+                            <li>Bootstrap Framework</li>
+                            <li>UI/UX Principles</li>
+                            <li>Project Development</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>Graphic Designing</h3>
+                        <div class="course-duration">3 Months @ ₹5000</div>
+                        <ul>
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>CorelDRAW</li>
+                            <li>Design Principles</li>
+                            <li>Logo Design</li>
+                            <li>Brand Identity</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>Windows Servicing</h3>
+                        <div class="course-duration">1 Month @ ₹4000</div>
+                        <ul>
+                            <li>Hardware Components</li>
+                            <li>OS Installation</li>
+                            <li>Driver Installation</li>
+                            <li>Software Installation</li>
+                            <li>Troubleshooting</li>
+                            <li>Maintenance</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>Tally</h3>
+                        <div class="course-duration">3 Months @ ₹6000</div>
+                        <ul>
+                            <li>Accounting Fundamentals</li>
+                            <li>Tally Basics</li>
+                            <li>Inventory Management</li>
+                            <li>GST Calculation</li>
+                            <li>Taxation</li>
+                            <li>Financial Reports</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>C Programming</h3>
+                        <div class="course-duration">3 Months @ ₹6000</div>
+                        <ul>
+                            <li>Programming Basics</li>
+                            <li>Data Types & Operators</li>
+                            <li>Control Statements</li>
+                            <li>Functions & Arrays</li>
+                            <li>Pointers</li>
+                            <li>File Handling</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>Python Programming</h3>
+                        <div class="course-duration">3 Months @ ₹6000</div>
+                        <ul>
+                            <li>Python Basics</li>
+                            <li>Data Structures</li>
+                            <li>OOP Concepts</li>
+                            <li>File Handling</li>
+                            <li>Libraries</li>
+                            <li>Project Work</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>DCA</h3>
+                        <div class="course-duration">6 Months @ ₹7000</div>
+                        <ul>
+                            <li>Computer Fundamentals</li>
+                            <li>Office Automation</li>
+                            <li>Internet Applications</li>
+                            <li>Programming Basics</li>
+                            <li>Web Designing</li>
+                            <li>Project Work</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>ADCA</h3>
+                        <div class="course-duration">1 Year @ ₹10500</div>
+                        <ul>
+                            <li>Advanced Office Automation</li>
+                            <li>Database Management</li>
+                            <li>Web Technologies</li>
+                            <li>Accounting Software</li>
+                            <li>Programming</li>
+                            <li>Multimedia Applications</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-content">
+                        <h3>PGDCA</h3>
+                        <div class="course-duration">1 Year @ ₹14500</div>
+                        <ul>
+                            <li>Advanced Programming</li>
+                            <li>DBMS</li>
+                            <li>Web Development</li>
+                            <li>Software Engineering</li>
+                            <li>Networking</li>
+                            <li>Project Development</li>
+                        </ul>
+                        <a href="#admission" class="btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Section -->
+    <section id="admission" class="admission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Admission Form</h2>
+                <p>Enroll in one of our courses to start your journey in the IT industry</p>
+            </div>
+            
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdbqNNVPdbkDOs67GuirlicAtO7Mth8ZUTQAfAPin4Xf7XbIQ/viewform?embedded=true" width="100%" height="1823" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for more information about our courses and admission process</p>
+            </div>
+            
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p><a href="tel:8787760746" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">8787760746</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:mctcthoubal@gmail.com" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">mctcthoubal@gmail.com</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Address</h3>
+                    <p>Max Computer Training Centre, Thoubal Wangamataba Sorok Mathak</p>
+                    <a href="https://goo.gl/maps/example" target="_blank" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin-top: 1rem;">View on Map</a>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1G6M7Vmx2T/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/maxcomputertraining/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/8787760746/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <img src="logo_transparent.png" alt="Max Computer Training Centre Logo" style="height: 60px;">
+                    <div class="logo-text">Max Computer Training Centre</div>
+                </div>
+                
+                <p>Affiliated to AICSM NSDC Partner and Sarva Education, Recognized by Govt. of India</p>
+                
+                <div class="footer-nav">
+                    <a href="#about">About</a>
+                    <a href="#courses">Courses</a>
+                    <a href="#admission">Admission</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <p>&copy; 2023 Max Computer Training Centre. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
